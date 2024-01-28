@@ -2,7 +2,7 @@ import {useState, useEffect } from "react";
 
 import { getTrendingMovies } from "../../api/posts";
 
-import styles from "./posts.module.css";
+import styles from "./movies-list.module.css";
 
 
 const Movies = () => {
