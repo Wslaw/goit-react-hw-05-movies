@@ -55,3 +55,4 @@ export const getTrendingMovies = async () => {
     throw error;
   }
 };
+
