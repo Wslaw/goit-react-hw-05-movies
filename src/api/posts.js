@@ -77,7 +77,7 @@ const options = {
   },
 };
 
-export const getAllMovies = async () => {
+export const getTrendingMovies = async () => {
   try {
     const response = await fetch(url, options);
     if (!response.ok) {

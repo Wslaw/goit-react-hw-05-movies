@@ -6,7 +6,7 @@ const HomePage = () => {
     
     return (
         <>
-            <h2 className={styles.text}>Home page</h2>
+            <h2 className={styles.text}>Trending today</h2>
             <Posts/>
         </>
     )
