@@ -1,7 +1,11 @@
-import styles from './single-movies.module.css';
+
+import { useParams } from 'react-router-dom';
+
+// import styles from './single-movies.module.css';
 
 const SingleMovies = () => {
-    
+    const params = useParams();
+    console.log(params)
     return (
         <div>
             <img src="#" alt="" />
