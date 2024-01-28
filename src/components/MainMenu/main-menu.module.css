@@ -14,5 +14,6 @@ color: #212121;
 }
 
 .link:global(.active){
-    color: red;
+    color: rgb(231, 115, 37);
+    text-decoration: underline;
 }
