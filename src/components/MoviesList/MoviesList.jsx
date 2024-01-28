@@ -1,4 +1,5 @@
-import {useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { getTrendingMovies } from "../../api/posts";
 
@@ -16,7 +17,7 @@ const Movies = () => {
         setLoading(true);
         const data = await getTrendingMovies();
         setMovies(data?.results ? data.results : []);
-        // console.log(data);
+        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -39,7 +40,8 @@ const Movies = () => {
     //   overview,
     }) => (
       <li key={id} className={styles.item}>
-        <h3 className={styles.title}>{original_name||title}</h3>
+        <Link to={`/movies/:${id}`}
+          className={styles.title}>{original_name || title}</Link>
         {/* <p className={styles.text}>Original Language: {original_language}</p>
         <p className={styles.text}>Adult: {adult ? 'Yes' : 'No'}</p>
         <img className={styles.picture} src={backdrop_path} alt={overview} /> */}

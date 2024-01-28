@@ -4,7 +4,7 @@
     font-weight: 400;
     margin: 0;
     margin-top: 10px;
-    color: blue;
+    color: rgb(5, 5, 200);
     
 }
 
@@ -22,7 +22,8 @@
     font-size: 22px;
     font-weight: 400;
     margin: 0;
-    color: blue;
+    color: rgb(5, 5, 200);
+    text-decoration: none;
 }
 
 .text{
