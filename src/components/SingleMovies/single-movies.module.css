@@ -3,3 +3,9 @@
     gap: 30px;
 
 }
+
+.additional{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}

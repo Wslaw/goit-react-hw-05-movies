@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
-import {getMoviesById} from '../../api/searchMovies';
+import { Link } from 'react-router-dom';
+import { getMoviesById } from '../../api/searchMovies';
+// import CastPage from 'Pages/CastPage/CastPage';
+// import ReviewsPage from '../../Pages/ReviewsPage/ReviewsPage'
 
 import styles from './single-movies.module.css';
 
@@ -43,9 +45,12 @@ const SingleMovies = () => {
             />
             <div>
               <h2>
-                            {movies.title} {'('}{movies.release_date.split("-")[0]}{')'}
+                {movies.title} {'('}
+                {movies.release_date.split('-')[0]}
+                {')'}
               </h2>
-              <p>{movies.overview}</p>
+                        <p>{movies.overview}</p>
+                        <span>User Score:{' '}{Math.floor(movies.vote_average*10)}%</span>
               <h3>Genres</h3>
               <ul>
                 {movies.genres.map(genre => (
@@ -57,8 +62,19 @@ const SingleMovies = () => {
         ) : (
           <p>Loading...</p>
         )}
+        <div>
+                <h3>Additional information</h3>
+                
+          <ul className={styles.additional}>
+            <Link className={styles.link} to={`/movies/cast/${movieId}`}>
+              Cast
+            </Link>
+            <Link className={styles.link} to={`/movies/reviews/${movieId}`}>
+              Reviews
+            </Link>
+          </ul>
+        </div>
       </div>
-     
     );
 };
 
