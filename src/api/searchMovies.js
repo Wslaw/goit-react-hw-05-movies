@@ -2,16 +2,11 @@ const fetch = require('node-fetch');
 
 
 
-// fetch(url, options)
-//   .then(res => res.json())
-//   .then(json => console.log(json))
-//   .catch(err => console.error('error:' + err));
 
 export const getMoviesById = async (movieId) => {
     console.log(movieId);
-    // const url = `https://api.themoviedb.org/3/collection/${movieId}?language=en-US`;
-    // const url = `https://api.themoviedb.org/3/find/external_id?external_source=${movieId}`;
-    const url = `https://api.themoviedb.org/3/find/${movieId}?external_source=imdb_id`;
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+
 
 
 const options = {
