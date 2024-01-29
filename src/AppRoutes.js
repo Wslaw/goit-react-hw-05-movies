@@ -11,14 +11,13 @@ import SharedLayout from 'components/SharedLayout/SharedLayout';
 const AppRoutes = () => {
   return (
     <>
-      {/* <MainMenu /> */}
       <Routes>
-              <Route path="/" element={<SharedLayout />}>
-                 <Route index element={<HomePage />}/>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
           <Route path="movies" element={<MoviesSearchPage />} />
           <Route path="movies/:id" element={<MovieDetailsPage />} />
-          <Route path="movies/cast" element={<CastPage />} />
-          <Route path="movies/reviews" element={<ReviewsPage />} />
+          <Route path="movies/:movieId/cast" element={<CastPage />} />
+          <Route path="movies/:movieId/reviews" element={<ReviewsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
