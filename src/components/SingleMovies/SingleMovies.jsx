@@ -37,40 +37,51 @@ const SingleMovies = () => {
       <div>
         {movies ? (
           <div className={styles.wrap}>
-            <img
+            <img className={styles.img}
               src={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
               alt="Backdrop"
               width="300px"
               height="auto"
             />
             <div>
-              <h2>
+              <h2 className={styles.article}>
                 {movies.title} {'('}
                 {movies.release_date.split('-')[0]}
                 {')'}
               </h2>
-                        <p>{movies.overview}</p>
-                        <span>User Score:{' '}{Math.floor(movies.vote_average*10)}%</span>
-              <h3>Genres</h3>
-              <ul>
+              <span>User Score: {Math.floor(movies.vote_average * 10)}%</span>
+              <h3 className={styles.title}>Overview</h3>
+              <p>{movies.overview}</p>
+              <h3 className={styles.title}>Genres</h3>
+              {/* <div className={styles.genres}> */}
+              <ul className={styles.list}>
                 {movies.genres.map(genre => (
-                  <li key={genre.id}>{genre.name}</li>
+                  <li className={styles.item} key={genre.id}>
+                    {genre.name}
+                  </li>
                 ))}
               </ul>
+              {/* </div> */}
             </div>
           </div>
         ) : (
           <p>Loading...</p>
         )}
-        <div>
-                <h3>Additional information</h3>
-                
-          <ul className={styles.additional}>
-            <Link className={styles.link} to={`/movies/cast/${movieId}`}>
-              Cast
+        <div className={styles.additional}>
+          <h3>Additional information</h3>
+
+          <ul className={styles.add}>
+            <Link
+              className={`${styles.link} ${styles.cast}`}
+              to={`/movies/cast/${movieId}`}
+            >
+              <span>Cast</span>
             </Link>
-            <Link className={styles.link} to={`/movies/reviews/${movieId}`}>
-              Reviews
+            <Link
+              className={`${styles.link} ${styles.reviews}`}
+              to={`/movies/reviews/${movieId}`}
+            >
+              <span>Reviews</span>
             </Link>
           </ul>
         </div>
