@@ -24,7 +24,11 @@ list-style: none;
     
 }
 
-
+.btn{
+    padding: 5px 10px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
 
 .wrap{
     border: 1px solid #543216;

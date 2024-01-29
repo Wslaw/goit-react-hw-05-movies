@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getMoviesById } from '../../api/searchMovies';
 // import CastPage from 'Pages/CastPage/CastPage';
@@ -11,10 +11,11 @@ const SingleMovies = () => {
   const [movies, setMovies] = useState();
     const { id } = useParams();
     const movieId = id.slice(1);
+    const navigate = useNavigate();
+
     // console.log("movieId = ",movieId);
   const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    console.log(error,loading)
 
     useEffect(() => {
       const fetchMovies = async () => {
@@ -34,7 +35,10 @@ const SingleMovies = () => {
     }, [movieId]);
 
     return (
-      <div>
+        <div>
+            {loading && <p>...Loading</p>}
+            {error && <p>Error:{error}</p>}
+            <button onClick={()=>{navigate(-1)}} type='button' className={styles.btn}>Go Back</button>
         {movies ? (
           <div className={styles.wrap}>
             <img className={styles.img}
