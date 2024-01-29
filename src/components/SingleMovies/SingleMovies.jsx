@@ -11,28 +11,25 @@ const SingleMovies = () => {
     const movieId = id.slice(1);
     console.log("movieId = ",movieId);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+    const [error, setError] = useState(null);
+    console.log(error,loading)
 
     useEffect(() => {
       const fetchMovies = async () => {
         try {
           setLoading(true);
             const  data  = await getMoviesById(movieId);
-            console.log('Data: ', data);
-          setMovies(data);
+            setMovies(data);
+            
         } catch (error) {
           setError(error.message);
-          // console.error('Error:', error.message);
-          // throw error;
+         
         } finally {
           setLoading(false);
         }
       };
       fetchMovies();
     }, [movieId]);
-
-    console.log("Movies:", movies);
-
 
     return (
       <div>
@@ -61,15 +58,7 @@ const SingleMovies = () => {
           <p>Loading...</p>
         )}
       </div>
-      // <div>
-      //   <img src="#" alt="" />
-      //   <h2>Title</h2>
-      //   <p></p>
-      //   <h3>Overview</h3>
-      //   <p>Cast</p>
-      //   <h3>Genres</h3>
-      //   <p>Reviews</p>
-      // </div>
+     
     );
 };
 
