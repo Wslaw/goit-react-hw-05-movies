@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 
 export const getMoviesById = async (movieId) => {
-    console.log(movieId);
+    // console.log(movieId);
     const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
 
 
@@ -23,7 +23,7 @@ headers: {
             throw new Error('Error fetching data');
         }
         const data = await response.json();
-        console.log("DATA = ",data);
+        // console.log("DATA = ",data);
         return data;
     } catch (error) {
         console.error('Error:', error.message);

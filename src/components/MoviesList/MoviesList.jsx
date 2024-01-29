@@ -17,7 +17,7 @@ const Movies = () => {
         setLoading(true);
         const data = await getTrendingMovies();
         setMovies(data?.results ? data.results : []);
-        console.log("What is this: ",data);
+        // console.log("What is this: ",data);
       } catch (error) {
         setError(error.message);
       } finally {

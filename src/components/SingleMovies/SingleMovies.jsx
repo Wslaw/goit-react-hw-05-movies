@@ -11,7 +11,7 @@ const SingleMovies = () => {
   const [movies, setMovies] = useState();
     const { id } = useParams();
     const movieId = id.slice(1);
-    console.log("movieId = ",movieId);
+    // console.log("movieId = ",movieId);
   const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     console.log(error,loading)

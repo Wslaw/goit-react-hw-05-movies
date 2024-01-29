@@ -61,22 +61,22 @@ height: fit-content;
 }
 
 .link.cast::after{
-    content: ''; /* Добавляем контент для псевдоэлемента */
-  position: absolute; /* Устанавливаем абсолютное позиционирование */
-  left: 0; /* Положение слева */
-  bottom: -2px; /* Расстояние до текста */
+    content: ''; 
+  position: absolute; 
+  left: 0; 
+  bottom: 1px; 
   max-width: 30px;
-  width: 100%; /* Ширина линии */
-  height: 1px; /* Толщина линии */
-  background-color: blue; /* Цвет линии */
+  width: 100%; 
+  height: 1px; 
+  background-color: blue; 
 }
 .link.reviews::after {
-  content: ''; /* Добавляем контент для псевдоэлемента */
-  position: absolute; /* Устанавливаем абсолютное позиционирование */
-  left: 0; /* Положение слева */
-  bottom: -2px; /* Расстояние до текста */
-  max-width: 55px; /* Ширина линии */
+  content: ''; 
+  position: absolute; 
+  left: 0; 
+  bottom: 1px; 
+  max-width: 55px; 
   width: 100%;
-  height: 0.5px; /* Толщина линии */
-  background-color: blue; /* Цвет линии */
+  height: 0.5px; 
+  background-color: blue; 
 }
