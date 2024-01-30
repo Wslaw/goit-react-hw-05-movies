@@ -1,36 +1,35 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { getSearchMovies } from 'api/api';
 import { useSearchParams } from 'react-router-dom';
-import { useMemo } from 'react';
+import styles from './movie-search.module.css';
 import { nanoid } from 'nanoid';
-import styles from './movie-search.module.css'
 
 const MovieSearch = ({ setItemMovie }) => {
-//   const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('');
   const [results, setResults] = useState('');
   const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const search = searchParams.get("search");
-    const inputRef = useRef(null);
-
+    const searchMovie = searchParams.get("search");
+    console.log('searchMovie', searchMovie);
+    
   const handleChange = ({ target }) => {
     const { value } = target;
-    //   setSearch(value);
-      setSearchParams({...Object.fromEntries(searchParams), search:value})
+      setSearch(value);
+      setSearchParams({search:value})
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setResults(search);  
-      inputRef.current.value = '';   
-      
+      setResults(search);
+      setSearchParams({ search });
+      setSearch('');
   };
 
   useEffect(() => {
-    if (results === '') return;
+    if (!results) return;
 
     const getMoviesList = async () => {
       try {
@@ -45,7 +44,8 @@ const MovieSearch = ({ setItemMovie }) => {
 
     getMoviesList();
   }, [results, setItemMovie]);
-const searchId = useMemo(() => nanoid(), []);
+  const searchId = useMemo(() => nanoid(), []);
+
   return (
     <div>
       {loading && <p>...Loading</p>}
@@ -55,7 +55,6 @@ const searchId = useMemo(() => nanoid(), []);
           Let's find movies{' '}
         </label>
         <input
-          ref={inputRef}
           className={styles.input}
           id={searchId}
           name="search"
