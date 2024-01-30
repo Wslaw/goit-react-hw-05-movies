@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getMoviesById } from 'api/api';
 
@@ -10,7 +10,7 @@ const MovieDetails = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
-  const location = useLocation();
+  // const location = useLocation();
 
   const navigate = useNavigate();
   useEffect(() => {
