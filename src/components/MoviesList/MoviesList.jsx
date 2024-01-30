@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { getTrendingMovies } from 'api/api';
 
 import styles from './movies-list.module.css';
-
+const { begin } = getTrendingMovies();
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(begin);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,9 +15,7 @@ const Movies = () => {
       try {
         setLoading(true);
         const {data} = await getTrendingMovies();
-        // console.log(data)
         setMovies(data?.results ? data.results : []);
-        // console.log("What is this: ",data);
       } catch (error) {
         setError(error.message);
       } finally {
