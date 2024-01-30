@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { getTrendingMovies } from 'api/api';
 
 import styles from './movies-list.module.css';
-const { begin } = getTrendingMovies();
+
 const Movies = () => {
-  const [movies, setMovies] = useState(begin);
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
