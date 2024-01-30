@@ -1,0 +1,20 @@
+.back{
+    background-color: rgb(113, 156, 156);
+}
+
+.list {
+    margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.item {
+  margin-bottom: 25px;
+}
+.castTitle{
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    padding: 25px;
+}

@@ -17,10 +17,9 @@ const MovieDetails = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const {data} = await getMoviesById(id);
-        // console.log("Data=",data)
+        const { data } = await getMoviesById(id);
         setMovies(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -48,8 +47,10 @@ const MovieDetails = () => {
           {movies && movies.backdrop_path && (
             <img
               className={styles.img}
-              src={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
-              alt="Backdrop"
+              src={`https://image.tmdb.org/t/p/w300${movies.poster_path}`}
+              alt={movies.original_title}
+              // src={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
+              // alt="Backdrop"
               width="300px"
               height="auto"
             />
@@ -65,11 +66,12 @@ const MovieDetails = () => {
             <p>{movies.overview}</p>
             <h3 className={styles.title}>Genres</h3>
             <ul className={styles.list}>
-              {movies.genres.map(genre => (
-                <li className={styles.item} key={genre.id}>
-                  {genre.name}
-                </li>
-              ))}
+              {movies.genres?.length &&
+                movies.genres.map(genre => (
+                  <li className={styles.item} key={genre.id}>
+                    {genre.name}
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
@@ -78,23 +80,19 @@ const MovieDetails = () => {
       )}
       <div className={styles.additional}>
         <h3>Additional information</h3>
-
         <ul className={styles.add}>
-          <NavLink
-            className={`${styles.Navlink} ${styles.cast}`}
-            to={`/movies/${id}/cast`}
-          >
+          <NavLink className={`${styles.link} ${styles.cast}`} to={`cast`}>
             <span>Cast</span>
           </NavLink>
-
           <NavLink
-            className={`${styles.Navlink} ${styles.reviews}`}
-            to={`/movies/${id}/reviews`}
+            className={`${styles.link} ${styles.reviews}`}
+            to={`reviews`}
           >
             <span>Reviews</span>
           </NavLink>
         </ul>
       </div>
+      <Outlet />
     </div>
   );
 };

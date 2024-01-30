@@ -1,14 +1,12 @@
-// import MovieDetails from 'components/MovieDetails/MovieDetails';
 import { useParams } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 import { getMovieCredits } from 'api/api';
 import styles from './cast-page.module.css';
 
-
 const BASE_URL = 'https://image.tmdb.org/t/p/w300';
 const defaultImg =
-  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x240';
 
 
 const CastPage = () => {
@@ -22,7 +20,7 @@ const CastPage = () => {
       try {
         setLoading(true);
         const  {data}  = await getMovieCredits(id);
-        // console.log('Cast: ', data);
+        console.log('Cast: ', data);
         setCast(data.cast);
       } catch (error) {
         setError(error);
@@ -35,7 +33,7 @@ const CastPage = () => {
   }, [id]);
 
 
-
+  console.log("cast",cast);
   const elements = cast.map(
     ({ id, character, original_name, profile_path }) => (
       <li className={styles.item} key={id}>
@@ -53,11 +51,12 @@ const CastPage = () => {
   const isCast = Boolean(cast.length);
 
   return (
-    <>
+    <div className={styles.back}>
       {loading && <p>...Loading</p>}
       {error && <p>{error}</p>}
+      {<h2 className={styles.castTitle}>Cast</h2>}
       {isCast && <ul className={styles.list}>{elements}</ul>}
-    </>
+    </div>
   );
 }
 export default CastPage;

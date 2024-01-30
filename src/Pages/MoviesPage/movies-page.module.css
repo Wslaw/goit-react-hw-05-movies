@@ -1,4 +1,9 @@
 .text{
     /* font-size: 18px; */
-    color: #343456;
+    color: #9898ae;
+}
+
+.back{
+    padding: 50px;
+    background-color: darkgreen;
 }

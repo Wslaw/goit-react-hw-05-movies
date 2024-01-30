@@ -39,11 +39,12 @@ const ReviewsPage = () => {
   const isReview = Boolean(reviews.length);
 
   return (
-    <>
+    <div className={styles.back}>
       {loading && <p>...Loading</p>}
       {error && <p>{error}</p>}
+      {<h2 className={styles.reviewsTitle}>Reviews</h2>}
       {isReview && <ul className={styles.list}>{elements}</ul>}
-    </>
+    </div>
   );
 };
 

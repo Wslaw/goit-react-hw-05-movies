@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 // import MainMenu from 'components/MainMenu/MainMenu';
+import MoviesPage from 'Pages/MoviesPage/MoviesPage';
 import HomePage from 'Pages/HomePage/HomePage';
-import MoviesSearchPage from 'Pages/MoviesPage/MoviesPage';
 import NotFoundPage from 'Pages/NotFoundPage/NotFoundPage';
 import MovieDetailsPage from 'Pages/MovieDetailsPage/MovieDetailsPage';
 import CastPage from 'Pages/CastPage/CastPage';
@@ -14,7 +14,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="movies" element={<MoviesSearchPage />} />
+          <Route path="movies" element={<MoviesPage />} />
           <Route path="movies/:id" element={<MovieDetailsPage />}>
             <Route path="cast" element={<CastPage />} />
             <Route path="reviews" element={<ReviewsPage />} />
