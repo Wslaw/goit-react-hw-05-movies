@@ -1,17 +1,21 @@
 .back{
     background-color: rgb(113, 156, 156);
+    
 }
 
 .list {
-    margin: 0;
+    margin: 0 auto;
   list-style: none;
   display: flex;
+  justify-content: center;
   gap: 15px;
   flex-wrap: wrap;
+  
 }
 .item {
   margin-bottom: 25px;
   cursor: pointer;
+  
 }
 .item:hover{
   transform: scale(1.05);
