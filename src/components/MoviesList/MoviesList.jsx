@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// import { getTrendingMovies } from '../../api/posts';
 import { getTrendingMovies } from 'api/api';
 
 import styles from './movies-list.module.css';
@@ -15,7 +14,8 @@ const Movies = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const data = await getTrendingMovies();
+        const {data} = await getTrendingMovies();
+        // console.log(data)
         setMovies(data?.results ? data.results : []);
         // console.log("What is this: ",data);
       } catch (error) {
@@ -30,7 +30,7 @@ const Movies = () => {
  
   const elements = movies.map(({ id, title, original_name }) => (
     <li key={id} className={styles.item}>
-      <Link to={`/movies/:${id}`} className={styles.title}>
+      <Link to={`/movies/${id}`} className={styles.title}>
         {original_name || title}
       </Link>
     </li>

@@ -1,34 +1,26 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-// import { getMoviesById } from '../../api/searchMovies';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { getMoviesById } from 'api/api';
 
-import styles from './single-movies.module.css';
+import styles from './movie-details.module.css';
 
-const SingleMovies = () => {
+const MovieDetails = () => {
   const [movies, setMovies] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const { id } = useParams();
-
-  useEffect(() => {
-    if (!id) return;
-  }, [id]);
-
-  console.log('id= ', id);
-  const movieId = id.slice(1);
-  console.log('movieId= ', movieId);
+  const location = useLocation();
 
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const data = await getMoviesById(movieId);
+        const {data} = await getMoviesById(id);
+        // console.log("Data=",data)
         setMovies(data);
+        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -36,7 +28,7 @@ const SingleMovies = () => {
       }
     };
     fetchMovies();
-  }, [movieId]);
+  }, [id]);
 
   return (
     <div>
@@ -72,7 +64,6 @@ const SingleMovies = () => {
             <h3 className={styles.title}>Overview</h3>
             <p>{movies.overview}</p>
             <h3 className={styles.title}>Genres</h3>
-            {/* <div className={styles.genres}> */}
             <ul className={styles.list}>
               {movies.genres.map(genre => (
                 <li className={styles.item} key={genre.id}>
@@ -80,7 +71,6 @@ const SingleMovies = () => {
                 </li>
               ))}
             </ul>
-            {/* </div> */}
           </div>
         </div>
       ) : (
@@ -90,23 +80,23 @@ const SingleMovies = () => {
         <h3>Additional information</h3>
 
         <ul className={styles.add}>
-          <Link
-            className={`${styles.link} ${styles.cast}`}
-            to={`/movies/${movieId}/cast`}
+          <NavLink
+            className={`${styles.Navlink} ${styles.cast}`}
+            to={`/movies/${id}/cast`}
           >
             <span>Cast</span>
-          </Link>
+          </NavLink>
 
-          <Link
-            className={`${styles.link} ${styles.reviews}`}
-            to={`/movies/${movieId}/reviews`}
+          <NavLink
+            className={`${styles.Navlink} ${styles.reviews}`}
+            to={`/movies/${id}/reviews`}
           >
             <span>Reviews</span>
-          </Link>
+          </NavLink>
         </ul>
       </div>
     </div>
   );
 };
 
-export default SingleMovies;
+export default MovieDetails;
