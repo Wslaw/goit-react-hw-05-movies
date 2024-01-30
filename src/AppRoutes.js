@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import MoviesPage from 'Pages/MoviesPage/MoviesPage';
 import HomePage from 'Pages/HomePage/HomePage';
-// import NotFoundPage from 'Pages/NotFoundPage/NotFoundPage';
+import NotFoundPage from 'Pages/NotFoundPage/NotFoundPage';
 import MovieDetailsPage from 'Pages/MovieDetailsPage/MovieDetailsPage';
 import CastPage from 'Pages/CastPage/CastPage';
 import ReviewsPage from './Pages/ReviewsPage/ReviewsPage';
@@ -19,7 +19,7 @@ const AppRoutes = () => {
             <Route path="reviews" element={<ReviewsPage />} />
           </Route>
 
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
