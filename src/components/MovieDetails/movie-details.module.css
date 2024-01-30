@@ -69,6 +69,15 @@ height: fit-content;
   position: relative;
   color: inherit; 
 }
+.link span:hover{
+       color: rgb(11, 21, 114) ;
+       font-weight: 500; 
+}
+
+.link:hover{
+       color: rgb(58, 74, 217) ;
+       font-weight: 500; 
+}
 .link span{
     color: blue ;
 }

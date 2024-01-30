@@ -1,8 +1,9 @@
 .text{
     /* font-size: 18px; */
-    color: #13133e;
+    color: #564162;
     /* margin-left: 30px; */
-    padding: 30px 50px;
+    padding: 40px 50px;
+    font-weight: normal;
 }
 
 .back{
