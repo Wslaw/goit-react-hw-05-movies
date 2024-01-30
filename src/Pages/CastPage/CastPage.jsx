@@ -20,7 +20,6 @@ const CastPage = () => {
       try {
         setLoading(true);
         const  {data}  = await getMovieCredits(id);
-        console.log('Cast: ', data);
         setCast(data.cast);
       } catch (error) {
         setError(error);
@@ -32,8 +31,6 @@ const CastPage = () => {
     fetchCast();
   }, [id]);
 
-
-  console.log("cast",cast);
   const elements = cast.map(
     ({ id, character, original_name, profile_path }) => (
       <li className={styles.item} key={id}>

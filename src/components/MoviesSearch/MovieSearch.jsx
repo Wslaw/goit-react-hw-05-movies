@@ -1,62 +1,38 @@
-// import { Component } from 'react';
-// import { nanoid } from 'nanoid';
-// import styles from './movie-search.module.css';
 
-// class MovieSearch extends Component {
-
-//     searchMovies = nanoid();
-//     render() {
-//         const { searchMovies } = this;
-//     return (
-//       <form className={styles.formGroup}>
-//         <div className={styles.group}>
-//           <label htmlFor={searchMovies} className={styles.label}>
-//             Searching movies
-//           </label>
-//           <input
-//             id={searchMovies}
-//             className={styles.input}
-//             placeholder="Find movie"
-//             type="text"
-//           />
-//           <button className={styles.btn} type="submit">
-//             Search
-//           </button>
-//         </div>
-//       </form>
-//     );
-//   }
-// }
-
-// export default MovieSearch;
-
-
-// ****************************************************************
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getSearchMovies } from 'api/api';
+import { useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
+import { nanoid } from 'nanoid';
 import styles from './movie-search.module.css'
 
 const MovieSearch = ({ setItemMovie }) => {
-  const [search, setSearch] = useState('');
+//   const [search, setSearch] = useState('');
   const [results, setResults] = useState('');
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const search = searchParams.get("search");
+    const inputRef = useRef(null);
 
   const handleChange = ({ target }) => {
     const { value } = target;
-    setSearch(value);
+    //   setSearch(value);
+      setSearchParams({...Object.fromEntries(searchParams), search:value})
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setResults(search);
-    setSearch('');
+    setResults(search);  
+      inputRef.current.value = '';   
+      
   };
 
   useEffect(() => {
     if (results === '') return;
 
-    const getList = async () => {
+    const getMoviesList = async () => {
       try {
         const { data } = await getSearchMovies(results);
         setItemMovie(data.results);
@@ -67,20 +43,21 @@ const MovieSearch = ({ setItemMovie }) => {
       }
     };
 
-    getList();
+    getMoviesList();
   }, [results, setItemMovie]);
-
+const searchId = useMemo(() => nanoid(), []);
   return (
-    <main>
+    <div>
       {loading && <p>...Loading</p>}
       {error && <p>Error: {error}</p>}
       <form className={styles.group} onSubmit={handleSubmit}>
-        <label htmlFor="search" className={styles.label}>
+        <label htmlFor={searchId} className={styles.label}>
           Let's find movies{' '}
         </label>
         <input
+          ref={inputRef}
           className={styles.input}
-          id="search"
+          id={searchId}
           name="search"
           value={search}
           onChange={handleChange}
@@ -94,7 +71,7 @@ const MovieSearch = ({ setItemMovie }) => {
           <span>Search</span>
         </button>
       </form>
-    </main>
+    </div>
   );
 };
 
