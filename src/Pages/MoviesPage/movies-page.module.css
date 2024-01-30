@@ -7,3 +7,17 @@
     padding: 50px;
     background-color: rgb(62, 103, 124);
 }
+.title{
+    color: rgb(0, 0, 0);
+}
+
+.list{
+/* list-style: none; */
+}
+
+.item{
+padding: 5px;
+}
+.title:hover{
+    color: rgb(52, 52, 235);
+}

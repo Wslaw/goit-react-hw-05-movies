@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getMoviesById } from 'api/api';
+// import MovieSearch from 'components/MoviesSearch/MovieSearch';
 
 import styles from './movie-details.module.css';
 
