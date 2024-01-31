@@ -27,7 +27,7 @@ const ReviewsPage = lazy(() => import('Pages/ReviewsPage/ReviewsPage'));
 
 const AppRoutes = () => {
   return (
-    <>
+    <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
@@ -40,7 +40,7 @@ const AppRoutes = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </>
+    </div>
   );
 };
 
