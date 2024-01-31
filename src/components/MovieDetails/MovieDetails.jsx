@@ -5,9 +5,7 @@ import { getMoviesById } from 'api/api';
 
 import styles from './movie-details.module.css';
 
-const BASE_URL = 'https://image.tmdb.org/t/p/w300';
-const defaultImg =
-  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=200x100';
+
 
 
 const MovieDetails = () => {
@@ -52,11 +50,7 @@ const MovieDetails = () => {
           {movies && movies.backdrop_path && (
             <img
               className={styles.img}
-              src={
-                movies.backdrop_path
-                  ? BASE_URL + movies.backdrop_path
-                  : defaultImg
-              }
+              src={`https://image.tmdb.org/t/p/w300${movies.poster_path}`}
               alt={movies.original_title}
               // src={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
               // alt="Backdrop"
