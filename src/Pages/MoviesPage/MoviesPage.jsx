@@ -1,7 +1,7 @@
 import MovieSearch from 'components/MoviesSearch/MovieSearch';
 import styles from './movies-page.module.css';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const MoviesPage = () => {
   const [itemMovie, setItemMovie] = useState([]);
@@ -11,7 +11,7 @@ const MoviesPage = () => {
     return itemMovie.map(({ title, id }) => {
       return (
         <li className={styles.item} key={id}>
-          <NavLink className={styles.title} to={`${id}`}>{title}</NavLink>
+          <Link className={styles.title} to={`${id}`}>{title}</Link>
         </li>
       );
     });

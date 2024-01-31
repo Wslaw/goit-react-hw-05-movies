@@ -69,6 +69,7 @@ height: fit-content;
   text-decoration: none;
   position: relative;
   color: inherit; 
+  font-size: 20px;
 }
 .link span:hover{
        color: rgb(11, 21, 114) ;

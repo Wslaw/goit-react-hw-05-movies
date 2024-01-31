@@ -53,6 +53,7 @@ const MovieSearch = ({ onSubmit }) => {
 
     getMoviesList();
   }, [results, onSubmit]);
+  
   const searchId = useMemo(() => nanoid(), []);
 
   return (
