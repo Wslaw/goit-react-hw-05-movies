@@ -1,26 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './movie-list-elements.module.css';
 
-
+const BASE_URL = 'https://image.tmdb.org/t/p/w300';
 
 const MovieListElements = ({ movies }) => {
   const location = useLocation();
 
-const handleItemClick = id => {
+  const handleItemClick = id => {
+    const url = `/movies/${id}`;
 
-  const url = `/movies/${id}`;
-  
-  window.location.href = url;
-};
-
+    window.location.href = url;
+  };
 
   // console.log(movies);
   const elements = movies.map(({ id, title, original_name, poster_path }) => (
     <li key={id} className={styles.item}>
-      <div className={styles.itemWrap} onClick={()=>handleItemClick(id)}>
+      <div className={styles.itemWrap} onClick={() => handleItemClick(id)}>
         <img
           className={styles.img}
-          src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+          src={poster_path ? BASE_URL + poster_path : ''}
           alt={title}
         />
 
