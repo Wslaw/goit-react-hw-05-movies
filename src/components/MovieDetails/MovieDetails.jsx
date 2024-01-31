@@ -5,7 +5,8 @@ import { getMoviesById } from 'api/api';
 
 import styles from './movie-details.module.css';
 
-const BASE_URL = 'https:image.tmdb.org/t/p/w300';
+const BASE_URL = 'https://image.tmdb.org/t/p/w300';
+
 
 const MovieDetails = () => {
   const [movies, setMovies] = useState();
