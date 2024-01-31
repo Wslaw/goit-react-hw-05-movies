@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { getMovieCredits } from 'api/api';
 import styles from './cast-page.module.css';
 
-const BASE_URL = 'https://image.tmdb.org/t/p/w300';
+const BASE_URL = 'https://image.tmdb.org/t/p/w200';
 const defaultImg =
-  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x240';
+  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=200x120';
 
 
 const CastPage = () => {

@@ -1,0 +1,33 @@
+ .list {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  margin-top: 10px;
+  color: rgb(7, 7, 126);
+}
+
+.item {
+ 
+  padding: 5px;
+}
+
+.error {
+  color: red;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  /* color: rgb(7, 7, 126); */
+  text-decoration: none;
+  cursor: pointer;
+}
+.title:hover {
+  color: rgb(105, 105, 221);
+}
+.title:focus {
+  outline: none;
+  color: rgb(105, 105, 221);
+}
+ 
