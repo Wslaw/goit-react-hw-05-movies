@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { getTrendingMovies } from 'api/api';
 
 import styles from './movies-list.module.css';
 
-const Movies = () => {
+const MoviesList = () => {
+  const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -14,10 +15,11 @@ const Movies = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const {data} = await getTrendingMovies();
-        setMovies(data?.results ? data.results : []);
+        const { data } = await getTrendingMovies();
+        console.log(data.results)
+        setMovies(data?.results || []);
       } catch (error) {
-        setError(error.message);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -25,10 +27,10 @@ const Movies = () => {
 
     fetchMovies();
   }, []);
- 
+
   const elements = movies.map(({ id, title, original_name }) => (
     <li key={id} className={styles.item}>
-      <Link to={`/movies/${id}`} className={styles.title}>
+      <Link className={styles.title} to={`/movies/${id}`} state={{from:location}} >
         {original_name || title}
       </Link>
     </li>
@@ -43,4 +45,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default MoviesList;

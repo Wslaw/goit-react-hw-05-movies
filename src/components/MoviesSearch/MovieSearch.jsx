@@ -11,6 +11,8 @@ const MovieSearch = ({ setItemMovie }) => {
   const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
+    // const search = searchParams.get('search');
+    const page = searchParams.get('page');
 
     const searchMovie = searchParams.get("search");
     console.log('searchMovie', searchMovie);
@@ -24,7 +26,7 @@ const MovieSearch = ({ setItemMovie }) => {
   const handleSubmit = e => {
     e.preventDefault();
       setResults(search);
-      setSearchParams({ search });
+      setSearchParams({ search, page });
       setSearch('');
   };
 

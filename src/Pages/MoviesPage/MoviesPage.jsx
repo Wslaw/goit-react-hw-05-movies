@@ -18,7 +18,7 @@ const MoviesPage = () => {
   };
 
   return (
-    <main>
+    <div className={styles.wrap}>
       <MovieSearch setItemMovie={setItemMovie} />
       <ol className={styles.list}>
         {itemMovie.length
@@ -26,7 +26,7 @@ const MoviesPage = () => {
           : null}
       </ol>
       
-    </main>
+    </div>
   );
 };
 export default MoviesPage;
