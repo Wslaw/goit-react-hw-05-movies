@@ -5,8 +5,7 @@ import { getMoviesById } from 'api/api';
 
 import styles from './movie-details.module.css';
 
-
-
+const BASE_URL = 'https:image.tmdb.org/t/p/w300';
 
 const MovieDetails = () => {
   const [movies, setMovies] = useState();
@@ -15,7 +14,7 @@ const MovieDetails = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -31,6 +30,8 @@ const MovieDetails = () => {
     };
     fetchMovies();
   }, [id]);
+
+  const { poster_path, title } = movies || {};
   return (
     <div>
       {loading && <p>...Loading</p>}
@@ -49,12 +50,8 @@ const MovieDetails = () => {
           {movies && movies.poster_path && (
             <img
               className={styles.img}
-              src={`https://image.tmdb.org/t/p/w300/${movies.poster_path}`}
-              alt={movies.original_title}
-              // src={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
-              // alt="Backdrop"
-              width="300px"
-              height="auto"
+              src={poster_path ? BASE_URL + poster_path : ''}
+              alt={title}
             />
           )}
           <div>
