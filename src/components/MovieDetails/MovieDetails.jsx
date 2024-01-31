@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getMoviesById } from 'api/api';
-// import MovieSearch from 'components/MoviesSearch/MovieSearch';
 
 import styles from './movie-details.module.css';
 
@@ -11,16 +10,16 @@ const MovieDetails = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
-  // const location = useLocation();
 
   const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
         const { data } = await getMoviesById(id);
         setMovies(data);
-        // console.log(data);
+        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {

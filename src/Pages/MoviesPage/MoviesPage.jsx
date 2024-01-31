@@ -19,7 +19,7 @@ const MoviesPage = () => {
 
   return (
     <div className={styles.wrap}>
-      <MovieSearch setItemMovie={setItemMovie} />
+      <MovieSearch onSubmit={setItemMovie} />
       <ol className={styles.list}>
         {itemMovie.length
           ? renderMovieList()

@@ -1,10 +1,8 @@
-import { useLocation, Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 import styles from './movie-list-elements.module.css';
-
 
 const MovieListElements = ({ movies }) => {
   const location = useLocation();
- 
 
   const elements = movies.map(({ id, title, original_name }) => (
     <li key={id} className={styles.item}>
@@ -17,7 +15,7 @@ const MovieListElements = ({ movies }) => {
       </Link>
     </li>
   ));
-  
+
   return (
     <div>
       <ol className={styles.list}>{elements}</ol>

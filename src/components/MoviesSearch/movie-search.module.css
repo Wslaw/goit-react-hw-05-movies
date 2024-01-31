@@ -1,10 +1,4 @@
-.formGroup{
-    /* display: flex;
-    flex-direction: column; */
-    /* gap: 10px; */
-    /* padding: 40px; */
-    
-}
+
 
 .group{
     display: flex;
@@ -17,6 +11,7 @@
     max-width: 180px;
     width: 100%;
     font-size: 20px;
+    color: rgb(49, 118, 237);
 }
 .input{
     max-width: 500px;
@@ -27,7 +22,7 @@
     border-radius: 4px;
   text-indent: 20px;
   font-size: 16px;
-  color: rgba(0, 0, 255, 0.855);
+  /* color: rgba(25, 135, 179, 0.855); */
 }
 
 .input::placeholder{
