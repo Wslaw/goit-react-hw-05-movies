@@ -31,7 +31,6 @@ const MovieDetails = () => {
     };
     fetchMovies();
   }, [id]);
-
   return (
     <div>
       {loading && <p>...Loading</p>}
@@ -47,10 +46,10 @@ const MovieDetails = () => {
       </button>
       {movies ? (
         <div className={styles.wrap}>
-          {movies && movies.backdrop_path && (
+          {movies && movies.poster_path && (
             <img
               className={styles.img}
-              src={`https://image.tmdb.org/t/p/w300${movies.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w300/${movies.poster_path}`}
               alt={movies.original_title}
               // src={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
               // alt="Backdrop"
