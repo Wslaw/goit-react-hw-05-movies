@@ -31,7 +31,7 @@ const MovieListElements = ({ movies }) => {
 
   return (
     <div>
-      <ol className={styles.list}>{elements}</ol>
+      <ul className={styles.list}>{elements}</ul>
     </div>
   );
 };
