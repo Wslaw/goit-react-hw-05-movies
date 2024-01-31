@@ -31,7 +31,8 @@ const MovieDetails = () => {
     fetchMovies();
   }, [id]);
 
-  const { poster_path, title } = movies || {};
+  const { poster_path, title, overview, genres, vote_average, release_date } =
+    movies || {};
   return (
     <div>
       {loading && <p>...Loading</p>}
@@ -47,7 +48,7 @@ const MovieDetails = () => {
       </button>
       {movies ? (
         <div className={styles.wrap}>
-          {movies && movies.poster_path && (
+          {movies && poster_path && (
             <img
               className={styles.img}
               src={poster_path ? BASE_URL + poster_path : ''}
@@ -56,17 +57,17 @@ const MovieDetails = () => {
           )}
           <div>
             <h2 className={styles.article}>
-              {movies.title} {'('}
-              {movies.release_date.split('-')[0]}
+              {title} {'('}
+              {release_date.split('-')[0]}
               {')'}
             </h2>
-            <span>User Score: {Math.floor(movies.vote_average * 10)}%</span>
+            <span>User Score: {Math.floor(vote_average * 10)}%</span>
             <h3 className={styles.title}>Overview</h3>
-            <p>{movies.overview}</p>
+            <p>{overview}</p>
             <h3 className={styles.title}>Genres</h3>
             <ul className={styles.list}>
-              {movies.genres?.length &&
-                movies.genres.map(genre => (
+              {genres?.length &&
+                genres.map(genre => (
                   <li className={styles.item} key={genre.id}>
                     {genre.name}
                   </li>
