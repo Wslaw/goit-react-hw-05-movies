@@ -7,14 +7,14 @@ const MovieListElements = ({ movies }) => {
   const location = useLocation();
 
 const handleItemClick = id => {
-  // Получаем URL для перехода
+
   const url = `/movies/${id}`;
-  // Переходим на новую страницу
+  
   window.location.href = url;
 };
 
 
-  console.log(movies);
+  // console.log(movies);
   const elements = movies.map(({ id, title, original_name, poster_path }) => (
     <li key={id} className={styles.item}>
       <div className={styles.itemWrap} onClick={()=>handleItemClick(id)}>
