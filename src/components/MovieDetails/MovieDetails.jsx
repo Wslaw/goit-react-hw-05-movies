@@ -6,7 +6,8 @@ import { getMoviesById } from 'api/api';
 import styles from './movie-details.module.css';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w300';
-
+const defaultImg =
+  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x240';
 
 const MovieDetails = () => {
   const [movies, setMovies] = useState();
@@ -15,6 +16,13 @@ const MovieDetails = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
+
+  const scrollToCast = () => {
+    const castElement = document.getElementById('cast');
+    if (castElement) {
+      castElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -52,7 +60,7 @@ const MovieDetails = () => {
           {movies && poster_path && (
             <img
               className={styles.img}
-              src={poster_path ? BASE_URL + poster_path : ''}
+              src={poster_path ? BASE_URL + poster_path : defaultImg}
               alt={title}
             />
           )}
@@ -82,7 +90,11 @@ const MovieDetails = () => {
       <div className={styles.additional}>
         <h3>Additional information</h3>
         <ul className={styles.add}>
-          <NavLink className={`${styles.link} ${styles.cast}`} to={`cast`}>
+          <NavLink
+            className={`${styles.link} ${styles.cast}`}
+            to={`cast`}
+            onClick={scrollToCast}
+          >
             <span>Cast</span>
           </NavLink>
           <NavLink

@@ -6,7 +6,7 @@ import styles from './cast-page.module.css';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w200';
 const defaultImg =
-  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=200x120';
+  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x240';
 
 
 const CastPage = () => {
@@ -48,7 +48,7 @@ const CastPage = () => {
   const isCast = Boolean(cast.length);
 
   return (
-    <div className={styles.back}>
+    <div id='cast' className={styles.back}>
       {loading && <p>...Loading</p>}
       {error && <p>{error}</p>}
       {<h2 className={styles.castTitle}>Cast</h2>}
