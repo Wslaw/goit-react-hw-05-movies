@@ -2,20 +2,22 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getMoviesById } from 'api/api';
+import { useLocation } from 'react-router-dom';
 
 import styles from './movie-details.module.css';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w300';
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x240';
-
-const MovieDetails = () => {
-  const [movies, setMovies] = useState();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const { id } = useParams();
-
-  const navigate = useNavigate();
+  
+  const MovieDetails = () => {
+    const [movies, setMovies] = useState();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const { id } = useParams();
+    
+    const navigate = useNavigate();
+    const location = useLocation();
 
   const scrollToCast = () => {
     const castElement = document.getElementById('cast');
@@ -40,23 +42,16 @@ const MovieDetails = () => {
     fetchMovies();
   }, [id]);
 
+
+  const from = location.state?.from || '/';
   const { poster_path, title, overview, genres, vote_average, release_date } =
     movies || {};
   return (
     <div>
       {loading && <p>...Loading</p>}
       {error && <p>Error:{error}</p>}
-      <button
-        onClick={() => {
-          navigate(-1);
-        }}
-        type="button"
-        className={styles.btn}
-      >
-        Go Back
-      </button>
-      {movies ? (
-        <div className={styles.wrap}>
+      <button onClick={() => { navigate(from); }} type="button" className={styles.btn} >  Go Back </button>
+      {movies ? (<div className={styles.wrap}>
           {movies && poster_path && (
             <img
               className={styles.img}
