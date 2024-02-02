@@ -43,7 +43,11 @@ const ReviewsPage = () => {
       {loading && <Loader />}
       {error && <p>{error}</p>}
       {<h2 className={styles.reviewsTitle}>Reviews</h2>}
-      {isReview && <ul className={styles.list}>{elements}</ul>}
+      {isReview ? (
+        <ul className={styles.list}>{elements}</ul>
+      ) : (
+        <p>No reviews available</p>
+      )}{' '}
     </div>
   );
 };

@@ -48,11 +48,15 @@ const CastPage = () => {
   const isCast = Boolean(cast.length);
 
   return (
-    <div id='cast' className={styles.back}>
+    <div id="cast" className={styles.back}>
       {loading && <Loader />}
       {error && <p>{error}</p>}
       {<h2 className={styles.castTitle}>Cast</h2>}
-      {isCast && <ul className={styles.list}>{elements}</ul>}
+      {isCast ? (
+        <ul className={styles.list}>{elements}</ul>
+      ) : (
+        <p>No cast available</p>
+      )}
     </div>
   );
 }
