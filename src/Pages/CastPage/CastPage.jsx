@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-
+import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { getMovieCredits } from 'api/api';
 import styles from './cast-page.module.css';
@@ -49,7 +49,7 @@ const CastPage = () => {
 
   return (
     <div id='cast' className={styles.back}>
-      {loading && <p>...Loading</p>}
+      {loading && <Loader />}
       {error && <p>{error}</p>}
       {<h2 className={styles.castTitle}>Cast</h2>}
       {isCast && <ul className={styles.list}>{elements}</ul>}

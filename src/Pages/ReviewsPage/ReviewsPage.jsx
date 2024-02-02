@@ -2,7 +2,7 @@
 import { getMovieReviews } from 'api/api';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import Loader from 'components/Loader/Loader';
 import styles from './review-page.module.css';
 
 const ReviewsPage = () => {
@@ -40,7 +40,7 @@ const ReviewsPage = () => {
 
   return (
     <div className={styles.back}>
-      {loading && <p>...Loading</p>}
+      {loading && <Loader />}
       {error && <p>{error}</p>}
       {<h2 className={styles.reviewsTitle}>Reviews</h2>}
       {isReview && <ul className={styles.list}>{elements}</ul>}

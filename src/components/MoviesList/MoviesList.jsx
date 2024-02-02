@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import Loader from 'components/Loader/Loader';
 import { getTrendingMovies } from 'api/api';
 import MovieListElements from 'components/MovieListElements/MovieListElemnents';
 
@@ -29,7 +29,7 @@ const MoviesList = () => {
   return (
     <>
       {error && <p className={styles.error}>{error}</p>}
-      {loading && <p>...Loading</p>}
+      {loading && <Loader />}
       {Boolean(movies.length) && <MovieListElements movies={movies} />}
     </>
   );

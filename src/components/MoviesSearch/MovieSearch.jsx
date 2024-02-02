@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { getSearchMovies } from 'api/api';
 import { useSearchParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import Loader from 'components/Loader/Loader';
 
 import styles from './movie-search.module.css';
 
@@ -58,7 +59,7 @@ const MovieSearch = ({ onSubmit }) => {
 
   return (
     <div>
-      {loading && <p>...Loading</p>}
+      {loading && <Loader />}
       {error && <p>Error: {error}</p>}
 
       <form className={styles.group} onSubmit={handleSubmit}>
@@ -70,7 +71,7 @@ const MovieSearch = ({ onSubmit }) => {
           id={searchId}
           ref={inputRef}
           name="search"
-          value={search}
+          value={results}
           onChange={handleChange}
           type="text"
           autoComplete="off"
