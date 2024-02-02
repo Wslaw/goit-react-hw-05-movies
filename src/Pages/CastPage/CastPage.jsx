@@ -52,11 +52,8 @@ const CastPage = () => {
       {loading && <Loader />}
       {error && <p>{error}</p>}
       {<h2 className={styles.castTitle}>Cast</h2>}
-      {isCast ? (
-        <ul className={styles.list}>{elements}</ul>
-      ) : (
-        <p>No cast available</p>
-      )}
+      {isCast && <ul className={styles.list}>{elements}</ul>}
+      {!isCast && <p className={styles.not}>No cast available</p>}
     </div>
   );
 }
