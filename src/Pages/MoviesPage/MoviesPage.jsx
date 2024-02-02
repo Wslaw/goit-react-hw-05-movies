@@ -60,7 +60,7 @@ const MoviesPage = () => {
       <MoviesSearch onSubmit={handleSearch} />
       {error && <p className={styles.error}>{error}</p>}
       {loading && <Loader />}
-      {isMovies && <MoviesList items={movies} />}
+      {isMovies && <MoviesList movies={movies} />}
       {isMovies && isMoreMovies && (
         <div className={styles.loadMore}>
           <Button className={styles.button} onClick={loadMore} type="button">

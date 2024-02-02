@@ -8,10 +8,10 @@ const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x240';
 
 
-const MoviesList = ({ items }) => {
+const MoviesList = ({ movies }) => {
   const location = useLocation();
 
-  const elements = items.map(({ id, title, original_name, poster_path }) => (
+  const elements = movies.map(({ id, title, original_name, poster_path }) => (
     <li key={id} className={styles.item}>
       <div className={styles.itemWrap}>
         <Link

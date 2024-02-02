@@ -34,7 +34,7 @@ const MoviesTrend = () => {
     <>
       {error && <p className={styles.error}>{error}</p>}
       {loading && <Loader />}
-      {Boolean(trend.length) && <MoviesList items={trend} />}
+      {Boolean(trend.length) && <MoviesList movies={trend} />}
     </>
   );
 };
