@@ -33,7 +33,7 @@ const defaultImg =
         setLoading(true);
         const { data } = await getMoviesById(id);
         setMovies(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {

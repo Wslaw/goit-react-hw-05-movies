@@ -34,19 +34,19 @@ const MoviesPage = () => {
     };
 
     if (search && (page === 1 || !page)) {
-      console.log(page);
       fetchMovies();
     }
   }, [search, page, searchParams]);
-
+  
   const handleSearch = ({ search }) => {
     setSearchParams({ search, page: 1 });
     setMovies([]);
   };
-
+  
+  // console.log(typeof(page));
   // const loadMore = () => setSearchParams({ search, page: Number(page) + 1 });
  const loadMore = () => {
-   const nextPage = Number(page) + 1;
+   const nextPage = page + 1;
    // console.log('nextPage=', nextPage);
    // console.log('Index-nextPage=', typeof nextPage);
    setSearchParams({ search, page: nextPage });
