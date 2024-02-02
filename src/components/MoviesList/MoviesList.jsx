@@ -1,37 +1,40 @@
-import { useState, useEffect } from 'react';
-import Loader from 'components/Loader/Loader';
-import { getTrendingMovies } from 'api/api';
-import MovieListElements from 'components/MovieListElements/MovieListElemnents';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './movies-list.module.css';
 
-const MoviesList = () => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        setLoading(true);
-        const { data } = await getTrendingMovies();
-        setMovies(data?.results || []);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+const BASE_URL = 'https://image.tmdb.org/t/p/w300';
+const defaultImg =
+  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x240';
 
-    fetchMovies();
-  }, []);
+
+const MoviesList = ({ items }) => {
+  const location = useLocation();
+
+  const elements = items.map(({ id, title, original_name, poster_path }) => (
+    <li key={id} className={styles.item}>
+      <div className={styles.itemWrap}>
+        <Link
+          className={styles.title}
+          to={`/movies/${id}`}
+          state={{ from: location }}
+        >
+          <img
+            className={styles.img}
+            src={poster_path ? BASE_URL + poster_path : defaultImg}
+            alt={title}
+          />
+
+          {original_name || title}
+        </Link>
+      </div>
+    </li>
+  ));
 
   return (
-    <>
-      {error && <p className={styles.error}>{error}</p>}
-      {loading && <Loader />}
-      {Boolean(movies.length) && <MovieListElements movies={movies} />}
-    </>
+    <div className={styles.container}>
+      <ul className={styles.list}>{elements}</ul>
+    </div>
   );
 };
 

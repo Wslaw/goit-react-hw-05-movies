@@ -37,7 +37,7 @@ const CastPage = () => {
         <img
           className={styles.img}
           src={profile_path ? BASE_URL + profile_path : defaultImg}
-          alt="Foto"
+          alt={original_name}
         />
         <h4 className={styles.title}>{character}</h4>
         <p className={styles.text}>{original_name}</p>

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getMoviesById } from 'api/api';
 import { useLocation } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
 
 import styles from './movie-details.module.css';
 
@@ -48,10 +49,20 @@ const defaultImg =
     movies || {};
   return (
     <div>
-      {loading && <p>...Loading</p>}
+      {loading && <Loader />}
       {error && <p>Error:{error}</p>}
-      <button onClick={() => { navigate(from); }} type="button" className={styles.btn} >  Go Back </button>
-      {movies ? (<div className={styles.wrap}>
+      <button
+        onClick={() => {
+          navigate(from);
+        }}
+        type="button"
+        className={styles.btn}
+      >
+        {' '}
+        Go Back{' '}
+      </button>
+      {movies ? (
+        <div className={styles.wrap}>
           {movies && poster_path && (
             <img
               className={styles.img}
@@ -80,21 +91,23 @@ const defaultImg =
           </div>
         </div>
       ) : (
-        <p>...Loading</p>
+        <Loader />
       )}
       <div className={styles.additional}>
         <h3>Additional information</h3>
         <ul className={styles.add}>
           <NavLink
             className={`${styles.link} ${styles.cast}`}
-            to={`cast`}
+            to="cast"
+            state={{ from: from }}
             onClick={scrollToCast}
           >
             <span>Cast</span>
           </NavLink>
           <NavLink
             className={`${styles.link} ${styles.reviews}`}
-            to={`reviews`}
+            to="reviews"
+            state={{ from: from }}
           >
             <span>Reviews</span>
           </NavLink>
