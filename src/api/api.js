@@ -23,9 +23,10 @@ export const getMoviesById = async id => {
 };
 
 
-export const getSearchMovies = async search => {
+export const getSearchMovies = async (search, page) => {
   const movies = instance.get(
-    `search/movie?include_adult=false&language=en-US&page=1&query=${search}`
+    // `search/movie?include_adult=false&language=en-US&page=1&query=${search}`
+    `/search/movie?query=${search}}&include_adult=false&page=${page}&language=en-US`
   );
   return movies;
 };

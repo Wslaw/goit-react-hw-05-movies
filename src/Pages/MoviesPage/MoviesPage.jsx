@@ -16,7 +16,7 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const search = searchParams.get('search');
-  const page = searchParams.get('page');
+  let page = Number(searchParams.get('page'));
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -27,25 +27,31 @@ const MoviesPage = () => {
           data.results?.length ? [...prevMovies, ...data.results] : prevMovies
         );
       } catch (error) {
-        setError(error.message);
+        setError(error);
       } finally {
         setLoading(false);
       }
     };
 
-    if (search && (page === '1' || !page)) {
+    if (search && (page === 1 || !page)) {
       console.log(page);
       fetchMovies();
     }
-  }, [search, page]);
+  }, [search, page, searchParams]);
 
   const handleSearch = ({ search }) => {
     setSearchParams({ search, page: 1 });
     setMovies([]);
   };
 
-  const loadMore = () => setSearchParams({ search, page: Number(page) + 1 });
-
+  // const loadMore = () => setSearchParams({ search, page: Number(page) + 1 });
+ const loadMore = () => {
+   const nextPage = Number(page) + 1;
+   // console.log('nextPage=', nextPage);
+   // console.log('Index-nextPage=', typeof nextPage);
+   setSearchParams({ search, page: nextPage });
+  //  getSearchMovies(search, page);
+ };
   const isMovies = Boolean(movies.length);
   const isMoreMovies = Boolean(movies.length % 20 === 0);
 
