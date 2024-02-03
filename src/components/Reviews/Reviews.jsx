@@ -3,7 +3,7 @@ import { getMovieReviews } from 'api/api';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Loader from 'components/Loader/Loader';
-import styles from './review-page.module.css';
+import styles from './review.module.css';
 
 const ReviewsPage = () => {
   const [reviews, setReviews] = useState([]);

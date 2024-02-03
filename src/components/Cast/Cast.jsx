@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { getMovieCredits } from 'api/api';
-import styles from './cast-page.module.css';
+import styles from './cast.module.css';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w200';
 const defaultImg =
