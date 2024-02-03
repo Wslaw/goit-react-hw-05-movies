@@ -18,7 +18,12 @@ const MoviesPage = () => {
   const search = searchParams.get('search');
   let page = Number(searchParams.get('page'));
 
+
+
   useEffect(() => {
+    if (!search) return; 
+
+
     const fetchMovies = async () => {
       try {
         setLoading(true);
@@ -33,9 +38,9 @@ const MoviesPage = () => {
       }
     };
 
-    if (search && (page === 1 || !page)) {
+    // if (search && (page === 1 || !page)) {
       fetchMovies();
-    }
+    // }
   }, [search, page, searchParams]);
   
   const handleSearch = ({ search }) => {
